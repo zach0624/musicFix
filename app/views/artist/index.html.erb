@@ -1,0 +1,39 @@
+<div class = "row"> 
+  <div class = "col-md-2">
+  </div>
+  <div class = "col-md-8">
+    <ul class="media-list">
+    <% @artists.each do |artist| %>
+        <li class="media">
+          <%= link_to image_tag(artist.imgUrl, :class => "media-object img-responsive img-thumbnail",
+          height: '100', width: '100'), artist_path(artist), :class => "pull-left" %>
+          <div class="media-body">
+            <h4 class="media-heading"><%= link_to artist.name, artist_path(artist) %></h4>
+            <p><%=h truncate(artist.bio, :length => 150) %>
+            <div class="row">
+              <div class="col-md-4">
+                <%= link_to 'Edit', edit_artist_path(artist)%>
+              </div>
+              <div class="col-md-4">
+                <%= link_to 'Delete', artist_path(artist), method: :delete%>
+              </div>
+              <div class="col-md-4">
+
+              </div>
+            </div>
+          </div>
+        </li>
+    <% end %>    
+    </ul>
+  </div>
+  <div class = "col-md-2">
+  </div>
+  <div class = "row">
+    <div class = "col-md-12">
+      <h3><%= link_to "New Artist", new_artist_path %></h3>
+    </div>
+  </div>
+</div>
+
+
+
